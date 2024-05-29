@@ -1,0 +1,86 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+
+# Build directories
+dist/
+build/
+
+# Environment variables
+.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE/editor configuration files
+.vscode/
+.idea/
+*.swp
+
+# Optional npm cache directory
+.npm
+
+# Optional REACT logs
+*.yarn-integrity
+.yarn/
+.pnp.*
+.pnp.js
+
+# Optional directories for local npm/yarn configuration
+.npmrc
+.yarnrc
+
+# Optional eslint cache
+.eslintcache
+
+# Service worker
+workbox-config.js
+
+# PostgreSQL
+*.sql
+*.dump
+pgdata/
+pgdump.sql
+
+# Exclude database configuration files
+database.json
+config.json
+
+# Exclude coverage reports
+coverage/
+
+# React specific files
+*.env.local
+*.env.development.local
+*.env.test.local
+*.env.production.local
+.env.test
+
+# Next.js build output
+.next/
+
+# Svelte build output
+.svelte-kit/
+
+# Nuxt.js build output
+.nuxt/
+
+# Gatsby files
+.cache/
+public/
+
+# Vue.js build output
+.vuepress/dist/
+.vuepress/.temp/
+nuxt/dist/
+vue.config.js
