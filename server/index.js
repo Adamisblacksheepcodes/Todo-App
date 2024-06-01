@@ -10,6 +10,10 @@ app.use(cors());
 app.use(express.json()); //req.body
 
 //ROUTES//
+app.get("/", (req, res) => {
+  res.send("Welcome to the Todo App API");
+});
+
 
 //create a todo
 
