@@ -1,23 +1,25 @@
 const express = require("express");
 const app = express();
-// const path = require("path");
-const port = process.env.PORT || 5000;
-
 const cors = require("cors");
-const pool = require("./db");
+// const pool = require("./db");
+
+const { Pool } = require('pg');
+require('dotenv').config();
+
+const pool = new Pool({
+    user: process.env.PSQL_USER,
+    host: process.env.PSQL_HOST,
+    database: process.env.PSQL_DATABASE,
+    password: process.env.PSQL_PASSWORD,
+    port: process.env.PSQL_PORT,
+    
+});
 
 //middleware
 app.use(cors());
 app.use(express.json()); //req.body
 
-// // Serve static files from the React app
-// app.use(express.static(path.join(__dirname, "../client/build")));
-
 //ROUTES//
-app.get("/", (req, res) => {
-  res.send("Welcome to the Todo App API");
-});
-
 
 //create a todo
 
@@ -92,12 +94,6 @@ app.delete("/todos/:id", async (req, res) => {
   }
 });
 
-// // All other GET requests not handled before will return the React app
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-// });
-
-
-app.listen(port, () => {
-  console.log(`server has started on port ${port}`);
+app.listen(5000, () => {
+  console.log("server has started on port 5000");
 });
