@@ -21,6 +21,10 @@ app.use(express.json()); //req.body
 
 //ROUTES//
 
+app.get('/', (req, res) => {
+  res.send('Welcome to the Todo App!');
+});
+
 //create a todo
 
 app.post("/todos", async (req, res) => {
@@ -53,10 +57,13 @@ app.get("/todos", async (req, res) => {
 app.get("/todos/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const todo = await pool.query("SELECT * FROM todo WHERE todo_id = $1", [
-      id
-    ]);
+    const todo = await pool.query("SELECT * FROM todo WHERE todo_id = $1", [id]);
 
+    if (todo.rows.length === 0) {
+      console.log("No todo found with ID:", id);
+      return res.status(404).send("Todo not found");
+    }
+    
     res.json(todo.rows[0]);
   } catch (err) {
     console.error(err.message);
